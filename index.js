@@ -3,21 +3,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-// create a date object that requires the date.js file
-const date = require(__dirname + "/date.js");
-
 const app = express();
 
 // set an array for the default items in the list
 let items = [
-  "Buy Food",
-  "Prepare Food",
-  "Cook Food",
-  "Eat Food",
-  "Clean Plates",
+  "First Name: Macy",
+  "Last Name: Ferguson",
+  "State: Hawaii",
+  "Country: USA",
 ];
-// set an empty array for new work items
-let workItems = ["Show Up", "Get Settled", "Drink Coffee"];
+// set an empty array for personal items
+let personalItems = [
+  "First Name: Macy",
+  "Last Name: Ferguson",
+  "Zodiac: Gemini",
+  "Birthstone: Emerald",
+];
 
 // setup an array for Fun and another for Weekend
 
@@ -44,8 +45,8 @@ app.post("/", function (req, res) {
   // code allows items to be added to the regular list and work list
   let item = req.body.newItem;
 
-  // if route is /work, add to work list
-  // if list === Fun then go to /fun
+  // if route is /Personal, add to personal list
+  // if list === zodiac then go to /Zodiac
   // if list ==== Weekend then go to /weekend
 
   if (req.body.list === "Work") {
