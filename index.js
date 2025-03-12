@@ -53,11 +53,11 @@ app.post("/", function (req, res) {
   // if list ==== Weekend then go to /weekend
 
   if (req.body.list === "Personal") {
-    workItems.push(item);
+    personal.push(item);
     res.redirect("/Personal");
   } 
   else if (req.body.list === "Zodiac") {
-    workItems.push(item);
+    zodiac.push(item);
     res.redirect("/Zodiac");
   } 
   else {
@@ -72,7 +72,7 @@ app.get("/Personal", function (req, res) {
 
   res.render("list", {
     listTitle: "Personal To-Do List",
-    newListItems: workItems,
+    newListItems: personal,
   });
 });
 
@@ -82,7 +82,7 @@ app.get("/Zodiac", function (req, res) {
 
   res.render("list", {
     listTitle: "Zodiac To-Do List",
-    newListItems: workItems,
+    newListItems: zodiac,
   });
 });
 
