@@ -9,15 +9,19 @@ const date = require(__dirname + "/date.js");
 const app = express();
 
 // set an array for the default items in the list
-let items = [
-  "Buy Food",
-  "Prepare Food",
-  "Cook Food",
-  "Eat Food",
-  "Clean Plates",
+let personal = [
+  "Debasis",
+  "Bhattacharya",
+  "Hawaii,
+  "USA",
 ];
 // set an empty array for new work items
-let workItems = ["Show Up", "Get Settled", "Drink Coffee"];
+let zodiac = [
+  "Debasis",
+  "Bhattacharya",
+  "Capricorn
+  "Garnet",
+];
 
 // setup an array for Fun and another for Weekend
 
@@ -48,21 +52,36 @@ app.post("/", function (req, res) {
   // if list === Fun then go to /fun
   // if list ==== Weekend then go to /weekend
 
-  if (req.body.list === "Work") {
+  if (req.body.list === "Personal") {
     workItems.push(item);
-    res.redirect("/work");
-  } else {
+    res.redirect("/Personal");
+  } 
+  else if (req.body.list === "Zodiac") {
+    workItems.push(item);
+    res.redirect("/Zodiac");
+  } 
+  else {
     items.push(item);
     res.redirect("/");
   }
 });
 
-// display default to do list on the localhost:3000/work route!
-app.get("/work", function (req, res) {
+// display Personal to do list on the localhost:3000/work route!
+app.get("/Personal", function (req, res) {
   let day = date.getDate();
 
   res.render("list", {
-    listTitle: "Work Items To-Do List",
+    listTitle: "Personal To-Do List",
+    newListItems: workItems,
+  });
+});
+
+// display Zodiac to do list on the localhost:3000/work route!
+app.get("/Zodiac", function (req, res) {
+  let day = date.getDate();
+
+  res.render("list", {
+    listTitle: "Zodiac To-Do List",
     newListItems: workItems,
   });
 });
